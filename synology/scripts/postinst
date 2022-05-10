@@ -1,0 +1,12 @@
+#!/bin/sh
+# Copyright (C) 2000-2021 Synology Inc. All rights reserved.
+
+. "$(dirname $0)"/common
+
+for dir in $prefs_dir $log_dir $cache_dir; do
+    if [ ! -d $dir ]; then
+	mkdir -p $dir
+    fi
+done
+
+exit 0

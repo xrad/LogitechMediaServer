@@ -1,0 +1,32 @@
+#!/bin/sh
+# Copyright (C) 2000-2021 Synology Inc. All rights reserved.
+
+. "$(dirname $0)"/common
+
+case $1 in
+    start)
+        perl $SLIMSERVER >$LOG_DIR/daemon.log 2>&1 \
+            --pidfile=$PID_FILE \
+            --logdir=$LOG_DIR \
+            --cachedir=$CACHE_DIR \
+            --prefsdir=$PREFS_DIR \
+            --httpport=$HTTPPORT \
+            --cliport=$CLIPORT \
+            &
+        exit 0
+    ;;
+    stop)
+        test -f $PID_FILE && kill $(cat $PID_FILE)
+        rm -f $PID_FILE
+        exit 0
+    ;;
+    status)
+        if [ ! -f $PID_FILE ]; then
+            exit 3
+        fi
+        exit 0
+    ;;
+    *)
+        exit 1
+    ;;
+esac
