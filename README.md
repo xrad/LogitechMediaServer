@@ -25,12 +25,8 @@ You need to prepare the cross development environment:
 
 ```
 cd somewhere/pkgscripts-ng/
-git checout -b DSM7.0 origin/DSM7.0
+git checkout -b DSM7.0 origin/DSM7.0
 sudo ./EnvDeploy -v 7.0 -p armada375
-```
-
-You also need this little patch to stop the build script from reporting a bogus build error:
-```
 ```
 
 Download sources:
@@ -43,5 +39,5 @@ cd somewhere/source/LogitechMediaServer
 
 ```
 cd somewhere/pkgscripts-ng/
-sudo ./PkgCreate.py -p aramada375 LogitechMediaServer
+sudo ./PkgCreate.py -p armada375 LogitechMediaServer
 ```
